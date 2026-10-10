@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus Esteves</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="github2.png">
+    <link rel="preload" as="image" href="linkedin2.png">
+    <link rel="preload" as="image" href="email2.png">
+</head>
+
+<body>
+    <aside id="lateral">
+        <nav class="menu-lateral" aria-label="Seções do site">
+            <a id="btnsbmim" href="#sobremim" aria-label="Sobre mim" title="Sobre mim"><img class="ico" src="user.png" alt=""><img class="ico-hover" src="user%20(1).png" alt=""></a>
+            <a id="btnskl" href="#skills" aria-label="Skills" title="Skills"><img class="ico" src="clean.png" alt=""><img class="ico-hover" src="clean%20(1).png" alt=""></a>
+            <a id="btnpjt" href="#projetos" aria-label="Projetos" title="Projetos"><img class="ico" src="folder.png" alt=""><img class="ico-hover" src="folder%20(1).png" alt=""></a>
+            <a id="btncnt" href="#contato" aria-label="Contato" title="Contato"><img class="ico" src="paper-plane.png" alt=""><img class="ico-hover" src="paper-plane%20(1).png" alt=""></a>
+        </nav>
+    </aside>
+    <header id="cima">
+        <a class="marca" href="#inicio" aria-label="Matheus Esteves — início"><span class="marca-matheus">Matheus</span> <span class="marca-esteves">Esteves</span><span class="marca-ponto">;</span></a>
+        <div class="header-acoes">
+            <button id="idioma" type="button" aria-label="Switch to English">PT / EN</button>
+            <button id="tema" type="button" aria-label="Ativar modo claro"><img id="tema-icone" src="sun.png" alt=""></button>
+            <a class="curriculo" href="/curriculo-matheusesteves.pdf" aria-label="Currículo"><img src="downloads.png" alt=""><span>Currículo</span></a>
+        </div>
+    </header>
+    <div class="pagina">
+        <main id="inicio">
+            <div class="textomn">
+                <p id="prz">Prazer, eu sou</p>
+                <h1 id="matheus">Matheus<br><span id="esteves">Esteves<span class="ponto">;</span></span></h1>
+                <p id="devjava">Desenvolvedor Java</p>
+                <a id="btnproj" href="#projetos">Ver projetos <span class="seta">↓</span></a>
+                <a id="btngith" href="https://github.com/esteves-mth" target="_blank" rel="noopener noreferrer"><span id="imggith"></span> GitHub</a>
+            </div>
+            <a class="setadown" href="#sobremim" aria-label="Rolar para Sobre mim"></a>
+        </main>
+        
+        <div id="sobremim" class="sobremim">
+            <div class="textosm">
+                <h2 id="hsobre">Sobre mim<span class="ponto">;</span></h2>
+                <p>
+                    Me chamo Matheus Esteves, tenho 16 anos e sou de Belo Horizonte, MG. Curso o segundo ano do Técnico
+                    em Informática no COTEMIG. Meu foco é <span class="dtq">backend</span>. Estudo <span class="dtq">Java</span> com <span class="dtq">POO</span>, Collections, <span class="dtq">JDBC</span>, <span class="dtq">MySQL</span> e
+                    <span class="dtq">Git/GitHub</span>. Sou curioso e autodidata: além do curso, sigo estudando por conta própria, corro atrás
+                    do que ainda não sei e pratico o que aprendo em projetos pessoais. Quando um problema me incomoda,
+                    fico até entender e resolver. Gosto de escrever código e busco sempre melhorar a solução até ela
+                    ficar bem estruturada.
+                    <span class="dtqt">
+                        Busco minha primeira oportunidade para aprender na prática, contribuir com a equipe e continuar
+                        evoluindo como desenvolvedor.
+                    </span>
+                </p>
+                <div class="bttnsm">
+                    <a id="btngt" href="https://github.com/esteves-mth" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+                    <a id="btnld" href="https://www.linkedin.com/in/esteves-mth/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+                    <a id="btnem" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=matheus.estevesdearaujo@gmail.com&amp;su=Contato%20pelo%20portf%C3%B3lio" target="_blank" rel="noopener noreferrer" aria-label="Enviar e-mail"></a>
+                </div>
+            </div>
+            <div class="imgsobre"></div>
+        </div>
+        <section id="skills" class="skills">
+            <h2 id="hskills">Skills<span class="ponto">;</span></h2>
+            <p class="skills-intro">Minhas tecnologias, uma carta de cada vez.</p>
+            <div class="skills-bar">
+                <div class="skills-tabs" role="group" aria-label="Filtrar tecnologias">
+                    <button class="skills-tab active" data-filter="all" aria-pressed="true">Todas</button>
+                    <button class="skills-tab" data-filter="backend" aria-pressed="false">Backend</button>
+                    <button class="skills-tab" data-filter="web" aria-pressed="false">Web</button>
+                    <button class="skills-tab" data-filter="tools" aria-pressed="false">Tools</button>
+                </div>
+                <span class="skills-hint">Clique na carta para ver os detalhes</span>
+            </div>
+            <div class="skills-grid" id="skills-grid"></div>
+        </section>
+          <section id="projetos" class="projetos">
+            <h2 id="hprojetos">Projetos<span class="ponto">;</span></h2>
+            <p class="projetos-intro">Da teoria ao código. Abra uma pasta.</p>
+            <div class="pastas-nav">
+                <span class="pastas-label" id="pastas-label">PROJETOS</span>
+                <div class="nav-dir" id="nav-dir">
+                    <span class="contador" id="contador"></span>
+                    <button class="seta" id="prev" aria-label="Projetos anteriores">←</button>
+                    <button class="seta" id="next" aria-label="Próximos projetos">→</button>
+                </div>
+            </div>
+            <div class="pastas" id="pastas" role="group" aria-label="Pastas de projetos"></div>
+            <div class="pastas-prog" id="prog" aria-hidden="true"><i id="prog-thumb"></i></div>
+            <div class="janela-wrap" id="janela-wrap" inert>
+                <div class="janela-inner">
+                    <article class="janela" id="janela" aria-label="Projeto aberto"></article>
+                </div>
+            </div>
+        </section>
+        <section id="contato" class="contato" aria-labelledby="hcontato">
+            <h2 id="hcontato">Contato<span class="ponto">;</span></h2>
+            <p class="contato-intro">
+                Estou em busca da minha primeira oportunidade. Se quiser conversar sobre uma vaga, estágio ou projeto, me escreve.
+            </p>
+            <form class="contato-form" id="contato-form" novalidate>
+                <div class="campo">
+                    <label for="cf-nome">Nome</label>
+                    <input type="text" id="cf-nome" name="nome" autocomplete="name" maxlength="80" required>
+                </div>
+                <div class="campo">
+                    <label for="cf-email">Seu e-mail</label>
+                    <input type="email" id="cf-email" name="email" autocomplete="email" maxlength="120" required>
+                </div>
+                <div class="campo">
+                    <label for="cf-msg">Mensagem</label>
+                    <textarea id="cf-msg" name="mensagem" rows="5" maxlength="1000" required></textarea>
+                </div>
+                
+                <div class="isca" aria-hidden="true">
+                    <label for="cf-site">Não preencha</label>
+                    <input type="text" id="cf-site" name="site" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="contato-enviar" id="cf-enviar">Enviar mensagem</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+            <p class="contato-ou">ou escreva direto</p>
+            <div class="contato-acoes">
+                <a class="contato-email" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=matheus.estevesdearaujo@gmail.com&amp;su=Contato%20pelo%20portf%C3%B3lio" target="_blank" rel="noopener noreferrer">Enviar e-mail <span aria-hidden="true">↗</span></a>
+                <button type="button" class="contato-copiar" id="copiar-email" data-email="matheus.estevesdearaujo@gmail.com">Copiar endereço</button>
+            </div>
+            <p class="contato-endereco">matheus.estevesdearaujo@gmail.com</p>
+            <p class="contato-status" id="copiar-status" role="status" aria-live="polite"></p>
+            <p class="contato-ou">ou chame no WhatsApp</p>
+            <div class="contato-acoes">
+                <a class="contato-zap" href="https://wa.me/5531984070549" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="contato-tel"><a href="https://wa.me/5531984070549" target="_blank" rel="noopener noreferrer">(31) 98407-0549</a></p>
+            <footer class="contato-rodape">© 2026 Matheus Esteves<span class="ponto">;</span></footer>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
