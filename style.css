@@ -3734,3 +3734,52 @@ html[data-theme="light"] .projetos .projetos-tab.active {
         transition: none;
     }
 }
+
+.projetos .pontos-proj {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-right: 14px;
+}
+
+.projetos .ponto-proj {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background-color: var(--hcontorno);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: width .35s var(--ease-mola), background-color .3s;
+}
+
+.projetos .ponto-proj::before {
+    content: '';
+    position: absolute;
+    inset: -9px -4px;
+}
+
+.projetos .ponto-proj.na-tela {
+    background-color: var(--tex);
+}
+
+.projetos .ponto-proj.ativo {
+    width: 22px;
+    background-color: var(--vermelho-principal);
+}
+
+.projetos .ponto-proj:hover:not(.ativo) {
+    background-color: var(--creme);
+}
+
+.projetos .ponto-proj:focus-visible {
+    outline: 2px solid var(--creme);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projetos .ponto-proj {
+        transition: none;
+    }
+}

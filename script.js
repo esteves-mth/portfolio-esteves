@@ -517,6 +517,7 @@ const iconePasta = `<svg class="pasta-ico" viewBox="0 0 24 24" fill="none" aria-
 </svg>`;
 
 const areaPastas = document.getElementById('pastas-area');
+const pontosProj = document.getElementById('pontos-proj');
 
 const ICONES_TECH = {
     'Java': 'java/java-original.svg',
@@ -730,6 +731,7 @@ function syncPastas() {
         b.setAttribute('aria-expanded', String(ativa));
         b.querySelector('.pasta-acao').textContent = ativa ? 'ABERTA ↙' : 'ABRIR ↘';
     });
+    atualizarIndicador();
 }
 
 function abrirPasta(i) {
@@ -800,6 +802,26 @@ function irPara(direcao) {
 botaoProjetoAnterior.addEventListener('click', () => irPara(-1));
 botaoProximoProjeto.addEventListener('click', () => irPara(1));
 
+function atualizarIndicador() {
+    const filhos = [...listaPastas.children].filter((c) => !c.hidden);
+    const chave = filhos.map((c) => c.dataset.i).join(',');
+    if (pontosProj.dataset.chave !== chave) {
+        pontosProj.dataset.chave = chave;
+        pontosProj.innerHTML = filhos.map((c) => `<button type="button" class="ponto-proj" data-ir="${c.dataset.i}" aria-label="Abrir ${projetos[c.dataset.i].name}"></button>`).join('');
+    }
+    const esq = listaPastas.scrollLeft,
+        dir = esq + listaPastas.clientWidth;
+    pontosProj.querySelectorAll('.ponto-proj').forEach((d, k) => {
+        const c = filhos[k];
+        d.classList.toggle('na-tela', c.offsetLeft >= esq - 8 && c.offsetLeft + c.offsetWidth <= dir + 8);
+        d.classList.toggle('ativo', Number(c.dataset.i) === pastaAberta);
+    });
+    const pos = filhos.findIndex((c) => Number(c.dataset.i) === pastaAberta);
+    const dois = (n) => String(n).padStart(2, '0');
+    const de = document.documentElement.lang === 'en' ? 'of' : 'de';
+    document.getElementById('contador').textContent = pos < 0 ? '' : `#${dois(pos + 1)} ${de} ${dois(filhos.length)}`;
+}
+
 function atualizarCarrossel() {
     const max = listaPastas.scrollWidth - listaPastas.clientWidth;
     const temRolagem = max > 2;
@@ -815,19 +837,7 @@ function atualizarCarrossel() {
     botaoProjetoAnterior.disabled = listaPastas.scrollLeft <= 2;
     botaoProximoProjeto.disabled = listaPastas.scrollLeft >= max - 2;
 
-    const esq = listaPastas.scrollLeft,
-        dir = esq + listaPastas.clientWidth;
-    const visiveis = filhos
-        .map((c, i) => ({
-            i,
-            ok: c.offsetLeft >= esq - 8 && c.offsetLeft + c.offsetWidth <= dir + 8
-        }))
-        .filter((c) => c.ok).map((c) => c.i + 1);
-    const pad = (n) => String(n).padStart(2, '0');
-    const total = pad(filhos.length);
-    const a = visiveis[0] || 1,
-        b = visiveis[visiveis.length - 1] || a;
-    document.getElementById('contador').textContent = a === b ? `${pad(a)} / ${total}` : `${pad(a)}–${pad(b)} / ${total}`;
+    atualizarIndicador();
 
     indicadorProgresso.style.width = `${(listaPastas.clientWidth / listaPastas.scrollWidth) * 100}%`;
     indicadorProgresso.style.left = `${(listaPastas.scrollLeft / listaPastas.scrollWidth) * 100}%`;
@@ -863,6 +873,21 @@ function irParaProjeto(nome) {
 
 abrirPasta(0);
 atualizarCarrossel();
+
+pontosProj.addEventListener('click', (e) => {
+    const ponto = e.target.closest('[data-ir]');
+    if (!ponto) return;
+    abrirPasta(Number(ponto.dataset.ir));
+    listaPastas.querySelector(`[data-i="${ponto.dataset.ir}"]`).scrollIntoView({
+        inline: 'nearest',
+        block: 'nearest',
+        behavior: prefereMovimentoReduzido() ? 'auto' : 'smooth'
+    });
+});
+new MutationObserver(atualizarIndicador).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang']
+});
 
 function navegarProjeto(direcao) {
     const vis = pastasVisiveis();
