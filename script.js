@@ -105,7 +105,7 @@ const skills = [{
         abbr: 'W11',
         group: 'tools',
         icon: 'windows11/windows11-original.svg',
-        accent: '#667dbc',
+        accent: '#536eb9',
         projetos: [],
         desc: 'Meu ambiente de trabalho.',
         pillars: [
@@ -177,8 +177,51 @@ function setTilt(card, x, y, max) {
     card.style.setProperty('--rotacao-y', `${(x - 0.5) * max * 2}deg`);
 }
 
+const animacoesSlots = new WeakMap();
+
+function animarReorganizacao(mudar) {
+    const slots = [...document.querySelectorAll('.skill-slot:not([hidden])')];
+    const antes = new Map(slots.map((s) => [s, s.getBoundingClientRect()]));
+    slots.forEach((s) => {
+        const a = animacoesSlots.get(s);
+        if (a) a.cancel();
+    });
+    mudar();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    slots.forEach((s) => {
+        const a = antes.get(s);
+        const d = s.getBoundingClientRect();
+        const dx = a.left - d.left;
+        const dy = a.top - d.top;
+        const sx = a.width / d.width;
+        const sy = a.height / d.height;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1 && Math.abs(sx - 1) < 0.01 && Math.abs(sy - 1) < 0.01) return;
+        s.style.transformOrigin = '0 0';
+        const anim = s.animate([{
+            translate: `${dx}px ${dy}px`,
+            scale: `${sx} ${sy}`
+        }, {
+            translate: '0px 0px',
+            scale: '1 1'
+        }], {
+            duration: 550,
+            easing: 'cubic-bezier(0.22, 0.7, 0.22, 1)'
+        });
+        animacoesSlots.set(s, anim);
+    });
+}
+
 function flipCard(card) {
     const flipped = card.classList.toggle('flipped');
+    const slot = card.parentElement;
+    animarReorganizacao(() => slot.classList.toggle('expandido', flipped));
+    if (flipped) {
+        const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        setTimeout(() => slot.scrollIntoView({
+            block: 'nearest',
+            behavior: reduzir ? 'auto' : 'smooth'
+        }), 350);
+    }
     card.querySelector('.front').inert = flipped;
     card.querySelector('.back').inert = !flipped;
     const alvo = flipped ? card.querySelector('[data-voltar]') : card.querySelector('.face-btn');
@@ -294,7 +337,7 @@ const projetos = [{
     {
         name: 'portfolio-esteves',
         sub: 'Portfólio pessoal',
-        status: 'Em evolução',  
+        status: 'Em evolução',
         images: [],
         site: 'https://esteves-mth.github.io/portfolio-esteves/',
         repo: 'https://github.com/esteves-mth/portfolio-esteves',
@@ -314,7 +357,7 @@ const projetos = [{
         status: 'Concluído',
         images: ['img/landing-page-sfizio.png'],
         site: 'https://esteves-mth.github.io/landing-page-sfizio/',
-        repo: 'https://github.com/esteves-mth//landing-page-sfizio',
+        repo: 'https://github.com/esteves-mth/landing-page-sfizio',
         desc: 'Landing page para a Sfizio, focada em apresentação de marca, com estrutura semântica, layout responsivo e interações leves.',
         habilidades: ['HTML', 'CSS', 'JavaScript'],
         praticado: ['Estrutura semântica e acessível em HTML.', 'Layout responsivo com Flexbox e Grid.', 'Interações leves com eventos em JavaScript.']
@@ -432,6 +475,21 @@ const traducoesDados = {
     "Compilação e empacotamento padronizado.": "Standardized compilation and packaging.",
     "Estrutura": "Structure",
     "Organização padrão de projetos Java.": "Standard Java project organization.",
+    "Collections e Stream API": "Collections and Stream API",
+    "Sistema de gerenciamento de biblioteca em Java puro (sem banco de dados). Controla cadastro de livros, empréstimos, devoluções e histórico usando Collections, Stream API e exceções customizadas.": "Library management system in pure Java (no database). Manages book registration, loans, returns and history using Collections, Stream API and custom exceptions.",
+    "Uso avançado de List, Map e ArrayList.": "Advanced use of List, Map and ArrayList.",
+    "Aplicação de Stream API para filtros e buscas.": "Applying Stream API for filters and searches.",
+    "Criação de exceções customizadas (checked).": "Creating custom (checked) exceptions.",
+    "Controle de estado e histórico de movimentações.": "State control and movement history.",
+    "Organização de código orientado a objetos.": "Object-oriented code organization.",
+    "Portfólio pessoal": "Personal portfolio",
+    "Portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro. Contém seções de sobre, skills interativas, projetos e contato, com suporte a tema claro/escuro e tradução PT/EN.": "Personal portfolio built with pure HTML, CSS and JavaScript. It contains about, interactive skills, projects and contact sections, with light/dark theme support and PT/EN translation.",
+    "Estrutura de página com navegação e seções dinâmicas.": "Page structure with navigation and dynamic sections.",
+    "Cards interativos e animações com CSS.": "Interactive cards and CSS animations.",
+    "Sistema de tema claro/escuro e persistência no localStorage.": "Light/dark theme system with localStorage persistence.",
+    "Tradução dinâmica de conteúdo (PT/EN).": "Dynamic content translation (PT/EN).",
+    "Formulário de contato e links externos.": "Contact form and external links.",
+
 
 };
 projetos.forEach((p) => {

@@ -3387,3 +3387,70 @@ main #btngith,
         transform: scale(.88);
     }
 }
+.skills .skills-grid {
+    align-items: flex-end;
+}
+
+.skills .skill-slot.expandido {
+    width: min(420px, 100%);
+}
+
+.skills .skill-slot.expandido .face {
+    padding: 24px;
+}
+
+.skills .skill-slot.expandido .back-title {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.skills .skill-slot.expandido .voltar {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+}
+
+.skills .skill-slot.expandido .pillars {
+    gap: 11px;
+}
+
+.skills .skill-slot.expandido .pillars li {
+    padding-left: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.skills .skill-slot.expandido .pillars strong {
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+
+.skills .skill-slot.expandido .back-proj {
+    padding-top: 14px;
+}
+
+.skills .skill-slot.expandido .back-proj-label {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.skills .skill-slot.expandido .proj-link,
+.skills .skill-slot.expandido .back-proj-vazio {
+    font-size: 13px;
+}
+
+.skills .skill-slot.expandido .proj-link {
+    padding: 9px 12px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+    .skills .skill-slot.expandido {
+        aspect-ratio: auto;
+        height: 650px;
+    }
+
+    .skills .skill-slot.expandido .face {
+        padding: 20px;
+    }
+}
