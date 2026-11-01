@@ -220,7 +220,7 @@ function flipCard(card) {
         setTimeout(() => slot.scrollIntoView({
             block: 'nearest',
             behavior: reduzir ? 'auto' : 'smooth'
-        }), 350);
+        }), 620);
     }
     card.querySelector('.front').inert = flipped;
     card.querySelector('.back').inert = !flipped;
@@ -438,6 +438,7 @@ const traducoesDados = {
     'Branding e front-end': 'Branding and front-end',
     'E-commerce visual': 'Visual e-commerce',
     'Destaque': 'Featured',
+    'Todos': 'All',
     'Em evolução': 'In progress',
     'Concluído': 'Completed',
     'CRUD para organizar produtos e categorias. A camada Java concentra as regras de negócio e o DAO acessa o MySQL com consultas parametrizadas.': 'CRUD to organize products and categories. The Java layer holds the business rules and the DAO accesses MySQL with parameterized queries.',
@@ -515,8 +516,91 @@ const iconePasta = `<svg class="pasta-ico" viewBox="0 0 24 24" fill="none" aria-
     <path class="ico-aberta" d="M3 10V5h7l3 3h8v3M3 20h17l3-9H6l-3 9Z" stroke="currentColor" stroke-width="1.4"/>
 </svg>`;
 
+const areaPastas = document.getElementById('pastas-area');
+const pontosProj = document.getElementById('pontos-proj');
+
+const ICONES_TECH = {
+    'Java': 'java/java-original.svg',
+    'MySQL': 'mysql/mysql-original.svg',
+    'HTML': 'html5/html5-original.svg',
+    'CSS': 'css3/css3-original.svg',
+    'JavaScript': 'javascript/javascript-original.svg',
+    'Maven': 'maven/maven-original.svg',
+    'JUnit': 'junit/junit-original.svg'
+};
+
+const ICONES_SVG = {
+    'JDBC': '<path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Zm0 0v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+    'Generics': '<path d="M8 6 3 12l5 6M16 6l5 6-5 6M13.5 5l-3 14"/>',
+    'Repository Pattern': '<path d="m12 3 9 4.5-9 4.5L3 7.5 12 3ZM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5"/>',
+    'Collections': '<path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
+    'Stream API': '<path d="M3 7c3 0 3-3 6-3s3 3 6 3 3-3 6-3M3 14c3 0 3-3 6-3s3 3 6 3 3-3 6-3M3 21c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/>',
+    'POO': '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3ZM12 12l8-4.5M12 12v9M12 12 4 7.5"/>',
+    'Algoritmos': '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 7v10M18 11c0 4-6 3-12 6"/>',
+    'padrao': '<path d="M4 4h8l8 8-8 8-8-8V4ZM8 8h.01"/>'
+};
+
+const SKILL_DA_TAG = {
+    'Java': 'Java SE',
+    'POO': 'Java SE',
+    'Generics': 'Java SE',
+    'Collections': 'Java SE',
+    'Stream API': 'Java SE',
+    'Repository Pattern': 'Java SE',
+    'Algoritmos': 'Java SE',
+    'JDBC': 'MySQL',
+    'MySQL': 'MySQL',
+    'HTML': 'HTML5',
+    'CSS': 'CSS3',
+    'JavaScript': 'JavaScript',
+    'Maven': 'Maven'
+};
+
+function svgTech(nome) {
+    return `<svg class="tech-ic" viewBox="0 0 24 24" aria-hidden="true">${ICONES_SVG[nome] || ICONES_SVG.padrao}</svg>`;
+}
+
+function iconeTech(nome) {
+    const arquivo = ICONES_TECH[nome];
+    if (!arquivo) return svgTech(nome);
+    return `<img class="tech-ic" data-tech="${nome}" src="${URL_ICONES_TECNOLOGIAS}${arquivo}" alt="" draggable="false">`;
+}
+
+function ativarFallbackIcones(raiz) {
+    raiz.querySelectorAll('img[data-tech]').forEach((img) => {
+        const trocar = () => {
+            const molde = document.createElement('template');
+            molde.innerHTML = svgTech(img.dataset.tech);
+            img.replaceWith(molde.content.firstChild);
+        };
+        img.addEventListener('error', trocar, {
+            once: true
+        });
+        if (img.complete && img.naturalWidth === 0) trocar();
+    });
+}
+
+function grupoDe(p) {
+    const h = p.habilidades || [];
+    if (h.includes('Java')) return 'java';
+    if (h.some((t) => ['HTML', 'CSS', 'JavaScript'].includes(t))) return 'web';
+    return 'outros';
+}
+
+function tagHTML(t) {
+    const skill = SKILL_DA_TAG[t];
+    const icone = iconeTech(t);
+    return skill ?
+        `<button type="button" class="tag" data-skill="${skill}" title="Ver na seção Skills: ${skill}">${icone}${t}</button>` :
+        `<span class="tag">${icone}${t}</span>`;
+}
+
+function pastasVisiveis() {
+    return [...listaPastas.querySelectorAll('.pasta:not([hidden])')].map((b) => Number(b.dataset.i));
+}
+
 listaPastas.innerHTML = projetos.map((p, i) => `
-    <button class="pasta" data-i="${i}" aria-expanded="false" aria-controls="janela-wrap">
+    <button class="pasta" data-i="${i}" data-grupo="${grupoDe(p)}" aria-expanded="false" aria-controls="janela-wrap">
         <span class="pasta-orelha"></span>
         <span class="pasta-corpo">
             <span class="pasta-topo">
@@ -527,9 +611,10 @@ listaPastas.innerHTML = projetos.map((p, i) => `
                 <span class="pasta-nome">${p.name}</span>
                 <span class="pasta-sub">${p.sub}</span>
             </span>
-            <span class="pasta-base">${iconePasta}<span class="pasta-acao">ABRIR ↘</span></span>
+            <span class="pasta-base"><span class="pasta-grupo">${iconePasta}<span class="pasta-techs">${(p.habilidades || []).slice(0, 3).map(iconeTech).join('')}</span></span><span class="pasta-acao">ABRIR ↘</span></span>
         </span>
     </button>`).join('');
+ativarFallbackIcones(listaPastas);
 
 function semImagemHTML(p) {
     return `<div class="img-vazia"><b>Screenshot do projeto</b><span>img/${p.name}.png</span></div>`;
@@ -597,17 +682,30 @@ function iniciarGaleria(p) {
     atualizar();
 }
 
+function navegacaoJanelaHTML(p) {
+    const vis = pastasVisiveis();
+    const pos = vis.indexOf(projetos.indexOf(p));
+    if (vis.length < 2 || pos < 0) return '';
+    const dois = (n) => String(n).padStart(2, '0');
+    return `<span class="janela-nav">
+            <button type="button" data-nav-proj="-1" aria-label="Projeto anterior"${pos === 0 ? ' disabled' : ''}>‹</button>
+            <span class="janela-pos">${dois(pos + 1)} / ${dois(vis.length)}</span>
+            <button type="button" data-nav-proj="1" aria-label="Próximo projeto"${pos === vis.length - 1 ? ' disabled' : ''}>›</button>
+        </span>`;
+}
+
 function janelaHTML(p) {
     const praticado = p.praticado && p.praticado.length ?
         `<ul class="janela-pratica">${p.praticado.map((t) => `<li>${t}</li>`).join('')}</ul>` :
         '<p class="janela-vazio">// em breve</p>';
     const habilidades = p.habilidades && p.habilidades.length ?
-        `<ul class="janela-tags">${p.habilidades.map((t) => `<li>${t}</li>`).join('')}</ul>` :
+        `<ul class="janela-tags">${p.habilidades.map((t) => `<li>${tagHTML(t)}</li>`).join('')}</ul>` :
         '<p class="janela-vazio">// em breve</p>';
     return `
     <div class="janela-barra">
         <span class="janela-pontos" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="janela-caminho">matheus / projetos / ${p.name}</span>
+        ${navegacaoJanelaHTML(p)}
         <button class="janela-fechar" data-fechar aria-label="Fechar pasta">×</button>
     </div>
     <div class="janela-corpo">
@@ -633,12 +731,14 @@ function syncPastas() {
         b.setAttribute('aria-expanded', String(ativa));
         b.querySelector('.pasta-acao').textContent = ativa ? 'ABERTA ↙' : 'ABRIR ↘';
     });
+    atualizarIndicador();
 }
 
 function abrirPasta(i) {
     const p = projetos[i];
     pastaAberta = i;
     janelaProjeto.innerHTML = janelaHTML(p);
+    ativarFallbackIcones(janelaProjeto);
     iniciarGaleria(p);
     containerJanelaProjeto.inert = false;
     containerJanelaProjeto.classList.add('aberta');
@@ -671,14 +771,24 @@ listaPastas.addEventListener('click', (e) => {
     }
 });
 janelaProjeto.addEventListener('click', (e) => {
-    if (e.target.closest('[data-fechar]')) fecharPasta();
+    if (e.target.closest('[data-fechar]')) {
+        fecharPasta();
+        return;
+    }
+    const nav = e.target.closest('[data-nav-proj]');
+    if (nav) {
+        navegarProjeto(Number(nav.dataset.navProj));
+        return;
+    }
+    const tag = e.target.closest('[data-skill]');
+    if (tag) irParaSkill(tag.dataset.skill);
 });
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && pastaAberta !== null && containerJanelaProjeto.contains(document.activeElement)) fecharPasta();
 });
 
 function passoCarrossel() {
-    const card = listaPastas.querySelector('.pasta');
+    const card = listaPastas.querySelector('.pasta:not([hidden])');
     const gap = parseFloat(getComputedStyle(listaPastas).columnGap) || 0;
     return card.offsetWidth + gap;
 }
@@ -692,29 +802,42 @@ function irPara(direcao) {
 botaoProjetoAnterior.addEventListener('click', () => irPara(-1));
 botaoProximoProjeto.addEventListener('click', () => irPara(1));
 
+function atualizarIndicador() {
+    const filhos = [...listaPastas.children].filter((c) => !c.hidden);
+    const chave = filhos.map((c) => c.dataset.i).join(',');
+    if (pontosProj.dataset.chave !== chave) {
+        pontosProj.dataset.chave = chave;
+        pontosProj.innerHTML = filhos.map((c) => `<button type="button" class="ponto-proj" data-ir="${c.dataset.i}" aria-label="Abrir ${projetos[c.dataset.i].name}"></button>`).join('');
+    }
+    const esq = listaPastas.scrollLeft,
+        dir = esq + listaPastas.clientWidth;
+    pontosProj.querySelectorAll('.ponto-proj').forEach((d, k) => {
+        const c = filhos[k];
+        d.classList.toggle('na-tela', c.offsetLeft >= esq - 8 && c.offsetLeft + c.offsetWidth <= dir + 8);
+        d.classList.toggle('ativo', Number(c.dataset.i) === pastaAberta);
+    });
+    const pos = filhos.findIndex((c) => Number(c.dataset.i) === pastaAberta);
+    const dois = (n) => String(n).padStart(2, '0');
+    const de = document.documentElement.lang === 'en' ? 'of' : 'de';
+    document.getElementById('contador').textContent = pos < 0 ? '' : `#${dois(pos + 1)} ${de} ${dois(filhos.length)}`;
+}
+
 function atualizarCarrossel() {
     const max = listaPastas.scrollWidth - listaPastas.clientWidth;
     const temRolagem = max > 2;
     navegacaoProjetos.hidden = !temRolagem;
     prog.hidden = !temRolagem;
+    botaoProjetoAnterior.hidden = !temRolagem;
+    botaoProximoProjeto.hidden = !temRolagem;
+    areaPastas.classList.toggle('tem-esq', temRolagem && listaPastas.scrollLeft > 2);
+    areaPastas.classList.toggle('tem-dir', temRolagem && listaPastas.scrollLeft < max - 2);
     if (!temRolagem) return;
+    const filhos = [...listaPastas.children].filter((c) => !c.hidden);
 
     botaoProjetoAnterior.disabled = listaPastas.scrollLeft <= 2;
     botaoProximoProjeto.disabled = listaPastas.scrollLeft >= max - 2;
 
-    const esq = listaPastas.scrollLeft,
-        dir = esq + listaPastas.clientWidth;
-    const visiveis = [...listaPastas.children]
-        .map((c, i) => ({
-            i,
-            ok: c.offsetLeft >= esq - 8 && c.offsetLeft + c.offsetWidth <= dir + 8
-        }))
-        .filter((c) => c.ok).map((c) => c.i + 1);
-    const pad = (n) => String(n).padStart(2, '0');
-    const total = pad(projetos.length);
-    const a = visiveis[0] || 1,
-        b = visiveis[visiveis.length - 1] || a;
-    document.getElementById('contador').textContent = a === b ? `${pad(a)} / ${total}` : `${pad(a)}–${pad(b)} / ${total}`;
+    atualizarIndicador();
 
     indicadorProgresso.style.width = `${(listaPastas.clientWidth / listaPastas.scrollWidth) * 100}%`;
     indicadorProgresso.style.left = `${(listaPastas.scrollLeft / listaPastas.scrollWidth) * 100}%`;
@@ -727,6 +850,7 @@ addEventListener('resize', atualizarCarrossel);
 function irParaProjeto(nome) {
     const i = projetos.findIndex(p => p.name === nome);
     if (i < 0) return;
+    if (listaPastas.querySelector(`[data-i="${i}"]`).hidden) document.querySelector('.projetos-tab[data-filter="all"]').click();
     abrirPasta(i);
     const comportamento = prefereMovimentoReduzido() ? 'auto' : 'smooth';
     document.querySelector('.pastas-nav').scrollIntoView({
@@ -749,6 +873,150 @@ function irParaProjeto(nome) {
 
 abrirPasta(0);
 atualizarCarrossel();
+
+pontosProj.addEventListener('click', (e) => {
+    const ponto = e.target.closest('[data-ir]');
+    if (!ponto) return;
+    abrirPasta(Number(ponto.dataset.ir));
+    listaPastas.querySelector(`[data-i="${ponto.dataset.ir}"]`).scrollIntoView({
+        inline: 'nearest',
+        block: 'nearest',
+        behavior: prefereMovimentoReduzido() ? 'auto' : 'smooth'
+    });
+});
+new MutationObserver(atualizarIndicador).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang']
+});
+
+function navegarProjeto(direcao) {
+    const vis = pastasVisiveis();
+    const pos = vis.indexOf(pastaAberta);
+    const alvo = vis[pos + direcao];
+    if (pos < 0 || alvo === undefined) return;
+    abrirPasta(alvo);
+    const pasta = listaPastas.querySelector(`[data-i="${alvo}"]`);
+    pasta.scrollIntoView({
+        inline: 'nearest',
+        block: 'nearest',
+        behavior: prefereMovimentoReduzido() ? 'auto' : 'smooth'
+    });
+    const seguinte = janelaProjeto.querySelector(`[data-nav-proj="${direcao}"]:not(:disabled)`) || janelaProjeto.querySelector('[data-nav-proj]:not(:disabled)');
+    if (seguinte) seguinte.focus({
+        preventScroll: true
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    if (pastaAberta === null || !containerJanelaProjeto.contains(document.activeElement)) return;
+    if (document.activeElement.closest('.galeria-trilho')) return;
+    e.preventDefault();
+    navegarProjeto(e.key === 'ArrowRight' ? 1 : -1);
+});
+
+function irParaSkill(nome) {
+    const i = skills.findIndex((s) => s.name === nome);
+    const slot = document.querySelectorAll('.skill-slot')[i];
+    if (i < 0 || !slot) return;
+    if (slot.hidden) document.querySelector('.skills-tab[data-filter="all"]').click();
+    const reduzir = prefereMovimentoReduzido();
+    slot.scrollIntoView({
+        behavior: reduzir ? 'auto' : 'smooth',
+        block: 'center'
+    });
+    const card = slot.querySelector('.skill-card');
+    setTimeout(() => {
+        if (!card.classList.contains('flipped')) flipCard(card);
+    }, reduzir ? 0 : 650);
+}
+
+document.querySelectorAll('.projetos-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.projetos-tab').forEach((t) => {
+            t.classList.toggle('active', t === tab);
+            t.setAttribute('aria-pressed', String(t === tab));
+        });
+        let n = 0;
+        listaPastas.querySelectorAll('.pasta').forEach((b) => {
+            b.hidden = tab.dataset.filter !== 'all' && b.dataset.grupo !== tab.dataset.filter;
+            b.classList.remove('entra');
+            if (!b.hidden && !prefereMovimentoReduzido()) {
+                b.style.setProperty('--n', n++);
+                void b.offsetWidth;
+                b.classList.add('entra');
+                b.addEventListener('animationend', () => b.classList.remove('entra'), {
+                    once: true
+                });
+            }
+        });
+        listaPastas.scrollTo({
+            left: 0,
+            behavior: 'auto'
+        });
+        const vis = pastasVisiveis();
+        if (vis.length && !vis.includes(pastaAberta)) abrirPasta(vis[0]);
+        else if (pastaAberta !== null) abrirPasta(pastaAberta);
+        atualizarCarrossel();
+    });
+});
+
+let arrasto = null;
+let bloquearCliqueArrasto = false;
+listaPastas.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    arrasto = {
+        x: e.clientX,
+        inicio: listaPastas.scrollLeft,
+        moveu: false
+    };
+});
+addEventListener('pointermove', (e) => {
+    if (!arrasto) return;
+    const dx = e.clientX - arrasto.x;
+    if (!arrasto.moveu && Math.abs(dx) > 6) {
+        arrasto.moveu = true;
+        listaPastas.classList.add('arrastando');
+    }
+    if (arrasto.moveu) listaPastas.scrollLeft = arrasto.inicio - dx;
+});
+['pointerup', 'pointercancel'].forEach((tipo) => addEventListener(tipo, () => {
+    if (!arrasto) return;
+    const moveu = arrasto.moveu;
+    arrasto = null;
+    if (!moveu) return;
+    listaPastas.classList.remove('arrastando');
+    const passo = passoCarrossel();
+    listaPastas.scrollTo({
+        left: Math.round(listaPastas.scrollLeft / passo) * passo,
+        behavior: prefereMovimentoReduzido() ? 'auto' : 'smooth'
+    });
+    bloquearCliqueArrasto = true;
+    setTimeout(() => {
+        bloquearCliqueArrasto = false;
+    }, 0);
+}));
+listaPastas.addEventListener('click', (e) => {
+    if (bloquearCliqueArrasto) e.stopImmediatePropagation();
+}, true);
+
+listaPastas.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const atual = e.target.closest('.pasta');
+    if (!atual) return;
+    const lista = [...listaPastas.querySelectorAll('.pasta:not([hidden])')];
+    const alvo = lista[lista.indexOf(atual) + (e.key === 'ArrowRight' ? 1 : -1)];
+    if (!alvo) return;
+    e.preventDefault();
+    alvo.focus({
+        preventScroll: true
+    });
+    alvo.scrollIntoView({
+        inline: 'nearest',
+        block: 'nearest',
+        behavior: prefereMovimentoReduzido() ? 'auto' : 'smooth'
+    });
+});
 
 const botaoCopiarEmail = document.getElementById('copiar-email');
 const statusCopiaEmail = document.getElementById('copiar-status');
@@ -1298,7 +1566,7 @@ formularioContato.addEventListener('submit', async (e) => {
 
 (() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const alvos = '.skills-tab, .contato-enviar, .contato-email, .contato-copiar, .contato-zap, .janela-links a, .skills .proj-link, main #btnproj, main #btngith, #cima .curriculo, #menu-flutuante, .boot-pular';
+    const alvos = '.skills-tab, .projetos-tab, .contato-enviar, .contato-email, .contato-copiar, .contato-zap, .janela-links a, .skills .proj-link, main #btnproj, main #btngith, #cima .curriculo, #menu-flutuante, .boot-pular';
     document.addEventListener('pointerdown', (e) => {
         const el = e.target.closest(alvos);
         if (!el || el.disabled) return;

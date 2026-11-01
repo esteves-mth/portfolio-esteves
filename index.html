@@ -119,15 +119,23 @@
         <section id="projetos" class="projetos">
             <h2 id="hprojetos">Projetos<span class="ponto">;</span></h2>
             <p class="projetos-intro">Da teoria ao código. Abra uma pasta.</p>
+            <div class="projetos-filtro" role="group" aria-label="Filtrar projetos">
+                <button class="projetos-tab active" data-filter="all" aria-pressed="true">Todos</button>
+                <button class="projetos-tab" data-filter="java" aria-pressed="false">Java</button>
+                <button class="projetos-tab" data-filter="web" aria-pressed="false">Web</button>
+            </div>
             <div class="pastas-nav">
                 <span class="pastas-label" id="pastas-label">PROJETOS</span>
                 <div class="nav-dir" id="nav-dir">
+                    <span class="pontos-proj" id="pontos-proj" role="group" aria-label="Projetos"></span>
                     <span class="contador" id="contador"></span>
-                    <button class="seta" id="prev" aria-label="Projetos anteriores">←</button>
-                    <button class="seta" id="next" aria-label="Próximos projetos">→</button>
                 </div>
             </div>
-            <div class="pastas" id="pastas" role="group" aria-label="Pastas de projetos"></div>
+            <div class="pastas-area" id="pastas-area">
+                <button class="seta seta-esq" id="prev" aria-label="Projetos anteriores">←</button>
+                <div class="pastas" id="pastas" role="group" aria-label="Pastas de projetos"></div>
+                <button class="seta seta-dir" id="next" aria-label="Próximos projetos">→</button>
+            </div>
             <div class="pastas-prog" id="prog" aria-hidden="true"><i id="prog-thumb"></i></div>
             <div class="janela-wrap" id="janela-wrap" inert>
                 <div class="janela-inner">
