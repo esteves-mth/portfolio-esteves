@@ -3148,6 +3148,7 @@ button {
 .contato .contato-copiar,
 .contato .contato-zap,
 .projetos .janela-links a,
+.projetos .projetos-tab,
 .skills .proj-link,
 main #btnproj,
 main #btngith,
@@ -3452,5 +3453,284 @@ main #btngith,
 
     .skills .skill-slot.expandido .face {
         padding: 20px;
+    }
+}
+
+
+@property --f-esq {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+@property --f-dir {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+.projetos {
+    position: relative;
+    background-image: radial-gradient(ellipse 70% 260px at 50% 0, #af143c24, transparent 72%);
+}
+
+.projetos .projetos-intro {
+    margin-bottom: 26px;
+}
+
+.projetos .projetos-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 0 34px;
+}
+
+.projetos .projetos-tab {
+    padding: 7px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--texx);
+    background: transparent;
+    border: 1px solid var(--hcontorno);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.projetos .projetos-tab:hover {
+    color: var(--creme);
+    border-color: var(--vermelho-principal);
+}
+
+.projetos .projetos-tab.active {
+    color: var(--creme);
+    background-color: var(--vermelho-principal);
+    border-color: var(--vermelho-principal);
+}
+
+html[data-theme="light"] .projetos .projetos-tab.active {
+    color: #FDF1D4;
+}
+
+.projetos .projetos-tab:focus-visible {
+    outline: 2px solid var(--creme);
+    outline-offset: 3px;
+}
+
+.projetos .pasta[hidden] {
+    display: none;
+}
+
+.projetos .pastas-area {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.projetos .pastas-area .pastas {
+    max-width: none;
+    margin: 0;
+    transition: --f-esq 0.3s, --f-dir 0.3s;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--f-esq), #000 calc(100% - var(--f-dir)), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 var(--f-esq), #000 calc(100% - var(--f-dir)), transparent 100%);
+}
+
+.projetos .pastas-area.tem-esq .pastas {
+    --f-esq: 18px;
+}
+
+.projetos .pastas-area.tem-dir .pastas {
+    --f-dir: 18px;
+}
+
+.projetos .pastas.arrastando {
+    scroll-snap-type: none;
+    cursor: grabbing;
+    user-select: none;
+}
+
+.projetos .pastas-area .seta {
+    position: absolute;
+    top: calc(50% - 23px);
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    background-color: var(--header);
+    border: 2px solid var(--hcontorno);
+    box-shadow: 0 8px 20px #0006;
+    transition: transform .3s var(--ease-mola), background-color .3s, border-color .3s, opacity .3s;
+}
+
+.projetos .pastas-area .seta[hidden] {
+    display: none;
+}
+
+.projetos .pastas-area .seta-esq {
+    left: -21px;
+}
+
+.projetos .pastas-area .seta-dir {
+    right: -21px;
+}
+
+.projetos .pastas-area .seta:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.projetos .pasta-grupo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.projetos .pasta-techs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-left: 10px;
+    border-left: 1px solid var(--hcontorno);
+}
+
+.projetos .tech-ic {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.projetos svg.tech-ic {
+    color: var(--tex);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.projetos .pasta.entra {
+    animation: pastaEntra .45s var(--ease-mola) both;
+    animation-delay: calc(var(--n, 0) * 70ms);
+}
+
+@keyframes pastaEntra {
+    from {
+        opacity: 0;
+        translate: 0 14px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.projetos .janela {
+    position: relative;
+    box-shadow: 0 18px 60px #af143c1f;
+}
+
+.projetos .janela::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--vermelho-principal), transparent 70%);
+    pointer-events: none;
+}
+
+.projetos .janela-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.projetos .janela-nav button {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    font-size: 17px;
+    line-height: 1;
+    color: var(--texx);
+    background: transparent;
+    border: 1px solid var(--hcontorno);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.projetos .janela-nav button:hover:not(:disabled),
+.projetos .janela-nav button:focus-visible {
+    color: #FDF1D4;
+    background-color: var(--vermelho-principal);
+    border-color: var(--vermelho-principal);
+    outline: none;
+}
+
+.projetos .janela-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.projetos .janela-pos {
+    min-width: 54px;
+    font-size: 11px;
+    text-align: center;
+    color: var(--texx);
+}
+
+.projetos .janela-tags li {
+    padding: 0;
+    overflow: hidden;
+}
+
+.projetos .janela-tags .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 11px;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
+}
+
+.projetos .janela-tags button.tag {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.projetos .janela-tags button.tag:hover,
+.projetos .janela-tags button.tag:focus-visible {
+    color: #FDF1D4;
+    background-color: var(--vermelho-principal);
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .projetos .pastas-area .seta {
+        display: none;
+    }
+
+    .projetos .janela-pontos,
+    .projetos .janela-pos {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projetos .pasta.entra {
+        animation: none;
+    }
+
+    .projetos .pastas-area .pastas {
+        transition: none;
     }
 }
