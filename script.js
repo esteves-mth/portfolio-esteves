@@ -1,5 +1,6 @@
 const URL_ICONES_TECNOLOGIAS = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/';
 
+
 const skills = [{
         name: 'Java SE',
         abbr: 'Jv',
@@ -7,13 +8,13 @@ const skills = [{
         icon: 'java/java-original.svg',
         accent: '#af1e14',
         projetos: ['generic-data-engine', 'estoque-crud-java', 'biblioteca-java', 'java-do-basico-ao-oop'],
-        desc: 'A base de tudo que construo.',
+        desc: 'Desenvolvimento Backend e aplicações Java.',
         pillars: [
-            ['POO', 'Classes, interfaces, encapsulamento, herança e polimorfismo.'],
-            ['Generics', 'Tipos genéricos e interfaces reutilizáveis (Identificavel).'],
-            ['Collections & Stream API', 'List, Map, filtros, buscas e manipulação de dados.'],
-            ['Arquitetura', 'Separação em camadas e Repository Pattern.'],
-            ['Exceções', 'Tratamento de erros e exceções customizadas.']
+            ['POO', 'Classes, objetos, construtores, encapsulamento, herança, polimorfismo e interfaces.'],
+            ['Generics', 'Tipos genéricos e criação de estruturas reutilizáveis.'],
+            ['Collections & Stream API', 'List, Map, manipulação de coleções, filtros e buscas com Streams.'],
+            ['Arquitetura', 'Separação de responsabilidades, organização em camadas e Repository Pattern.'],
+            ['Exceções', 'Exceções nativas, tratamento de erros e criação de exceções personalizadas.']
         ]
     },
     {
@@ -23,11 +24,12 @@ const skills = [{
         icon: 'mysql/mysql-original.svg',
         accent: '#669BBC',
         projetos: ['estoque-crud-java'],
-        desc: 'Dados com estrutura e propósito.',
+        desc: 'Bancos de dados relacionais e persistência de dados.',
         pillars: [
-            ['Modelagem relacional', 'Tabelas, relações e integridade.'],
-            ['SQL', 'Consultas e operações de dados.'],
-            ['JDBC', 'Conexões e persistência em Java.']
+            ['Modelagem Relacional', 'Criação de tabelas, chaves primárias, chaves estrangeiras e relacionamentos.'],
+            ['SQL', 'Consultas, operações CRUD, filtros, JOINs e manipulação de dados.'],
+            ['Integridade de Dados', 'Restrições, relacionamentos e consistência das informações no banco.'],
+            ['JDBC', 'Conexões, PreparedStatement e execução de operações no banco.']
         ]
     },
     {
@@ -37,11 +39,12 @@ const skills = [{
         icon: 'html5/html5-original.svg',
         accent: '#ef652a',
         projetos: ['landing-page-sfizio', 'sfizio-massas'],
-        desc: 'Semântica antes de estética.',
+        desc: 'Estruturação e semântica de páginas web.',
         pillars: [
-            ['Semântica', 'Uma estrutura com significado.'],
-            ['Formulários', 'Entradas e organização de dados.'],
-            ['Acessibilidade', 'Interfaces pensadas para pessoas.']
+            ['Semântica', 'Estruturação de páginas com elementos semânticos.'],
+            ['Formulários', 'Criação de formulários, campos e validações básicas.'],
+            ['Elementos e Navegação', 'Links, imagens, listas, tabelas e navegação entre páginas.'],
+            ['Acessibilidade', 'Uso de atributos e estruturas que facilitam a navegação e compreensão do conteúdo.']
         ]
     },
     {
@@ -51,11 +54,12 @@ const skills = [{
         icon: 'css3/css3-original.svg',
         accent: '#668bbc',
         projetos: ['landing-page-sfizio', 'sfizio-massas'],
-        desc: 'Precisão em cada interface.',
+        desc: 'Estilização e construção de interfaces.',
         pillars: [
-            ['Layout', 'Flexbox e Grid para organizar.'],
-            ['Responsividade', 'Interfaces em diferentes telas.'],
-            ['Animação', 'Transições e estados visuais.']
+            ['Layout', 'Flexbox, Grid e posicionamento de elementos.'],
+            ['Estilização', 'Cores, tipografia, espaçamentos e efeitos visuais.'],
+            ['Responsividade', 'Media Queries e adaptação de layouts para diferentes telas (em desenvolvimento).'],
+            ['Animação', 'Transições, transformações e animações com CSS (em desenvolvimento).']
         ]
     },
     {
@@ -65,11 +69,12 @@ const skills = [{
         icon: 'javascript/javascript-original.svg',
         accent: '#eab308',
         projetos: ['landing-page-sfizio', 'portfolio-esteves'],
-        desc: 'Interação que faz sentido.',
+        desc: 'Fundamentos da linguagem e interatividade web.',
         pillars: [
-            ['Fundamentos', 'Funções e estruturas de dados.'],
-            ['DOM', 'Interfaces que respondem.'],
-            ['Eventos', 'Interações e comportamento.']
+            ['Fundamentos', 'Variáveis, tipos de dados, operadores, condicionais e loops.'],
+            ['Funções e Estruturas', 'Funções, arrays e objetos.'],
+            ['DOM e Eventos', 'Noções de seleção e manipulação de elementos HTML e tratamento de eventos.'],
+            ['Interatividade', 'Implementação de funcionalidades dinâmicas com apoio de referências e código externo.']
         ]
     },
     {
@@ -79,11 +84,11 @@ const skills = [{
         icon: 'csharp/csharp-original.svg',
         accent: '#a855f7',
         projetos: [],
-        desc: 'Novas perspectivas, mesma lógica.',
+        desc: 'Fundamentos de desenvolvimento com C#.',
         pillars: [
-            ['Sintaxe', 'Tipos e estruturas de controle.'],
-            ['Orientação a objetos', 'Classes e organização do código.'],
-            ['Algoritmos', 'Resolução estruturada de problemas.']
+            ['Fundamentos', 'Sintaxe, variáveis, tipos de dados e estruturas de controle.'],
+            ['POO', 'Classes, objetos, métodos e construtores.'],
+            ['Banco de Dados', 'Integração de aplicações C# com bancos de dados relacionais em atividades práticas.']
         ]
     },
     {
@@ -93,39 +98,27 @@ const skills = [{
         icon: 'linux/linux-original.svg',
         accent: '#94a3b8',
         projetos: [],
-        desc: 'O terminal como ferramenta.',
+        desc: 'Utilização de terminal e administração básica de sistemas Linux.',
         pillars: [
-            ['Terminal', 'Navegação e comandos.'],
-            ['Arquivos e permissões', 'Organização do ambiente.'],
-            ['Shell', 'Rotinas e automação.']
+            ['Terminal', 'Navegação por diretórios e execução de comandos.'],
+            ['Gerenciamento de Arquivos', 'Criação, cópia, movimentação e remoção de arquivos e diretórios.'],
+            ['Permissões e Usuários', 'Gerenciamento de permissões, usuários e privilégios administrativos.'],
+            ['Serviços e Servidores', 'Contato prático com Apache HTTP Server e serviços FTP.']
         ]
     },
     {
-        name: 'Windows 11',
-        abbr: 'W11',
-        group: 'tools',
-        icon: 'windows11/windows11-original.svg',
-        accent: '#536eb9',
-        projetos: [],
-        desc: 'Meu ambiente de trabalho.',
-        pillars: [
-            ['Configuração', 'Instalação e ajuste do sistema.'],
-            ['Terminal', 'Comandos no PowerShell e CMD.'],
-            ['Ambiente de dev', 'Ferramentas para programar.']
-        ]
-    },
-    {
-        name: 'Git / GitHub',
+        name: 'Git & GitHub',
         abbr: 'Git',
         group: 'tools',
         icon: 'git/git-original.svg',
         accent: '#f97316',
         projetos: [],
-        desc: 'Cada evolução, um commit.',
+        desc: 'Controle de versão e colaboração em projetos.',
         pillars: [
-            ['Versionamento', 'Histórico e evolução do código.'],
-            ['Branches', 'Trabalho em fluxos separados.'],
-            ['Repositórios', 'Organização e colaboração.']
+            ['Repositórios', 'Criação, organização e gerenciamento de repositórios.'],
+            ['Controle de Versão', 'Commits, histórico de alterações, push e pull.'],
+            ['Branches', 'Criação, gerenciamento e alternância entre branches.'],
+            ['Colaboração', 'Organização do fluxo de desenvolvimento e compartilhamento de projetos.']
         ]
     },
     {
@@ -137,12 +130,13 @@ const skills = [{
         projetos: ['generic-data-engine'],
         desc: 'Build e gerenciamento de dependências.',
         pillars: [
-            ['Dependências', 'Gerenciamento de bibliotecas do projeto.'],
-            ['Build', 'Compilação e empacotamento padronizado.'],
-            ['Estrutura', 'Organização padrão de projetos Java.']
+            ['Gerenciamento de Dependências', 'Adição e configuração de bibliotecas pelo pom.xml.'],
+            ['Estrutura de Projetos', 'Organização de projetos Java e configuração do pom.xml.'],
+            ['Build', 'Conhecimento básico dos comandos Maven e do processo de construção de projetos.']
         ]
     }
 ];
+
 
 const gradeHabilidades = document.getElementById('skills-grid');
 const pad = (n) => String(n).padStart(3, '0');
@@ -278,100 +272,138 @@ document.querySelectorAll('.skills-tab').forEach((tab) => {
     });
 });
 
+
+
 const projetos = [{
         name: 'estoque-crud-java',
         sub: 'Backend Java',
         status: 'Destaque',
-        images: ['img/estoque-crud-java.png'],
+        images: [
+            'img/estoque-crud-java/img-ec1.png',
+            'img/estoque-crud-java/img-ec2.png'
+        ],
         site: '',
         repo: 'https://github.com/esteves-mth/estoque-crud-java/',
-        desc: 'CRUD para organizar produtos e categorias. A camada Java concentra as regras de negócio e o DAO acessa o MySQL com consultas parametrizadas.',
+        desc: 'Aplicação de gerenciamento de estoque desenvolvida em Java, com persistência em MySQL por meio de JDBC.',
         habilidades: ['Java', 'JDBC', 'MySQL'],
-        praticado: ['Organização do domínio e das operações de cadastro.', 'Integração entre a aplicação Java e o banco de dados.', 'Criação, leitura, atualização e exclusão de registros (CRUD).']
+        praticado: [
+            'Organização de classes e operações de gerenciamento de produtos.',
+            'Integração entre aplicação Java e banco de dados MySQL.',
+            'Implementação de operações CRUD com consultas parametrizadas.'
+        ]
     },
     {
         name: 'generic-data-engine',
         sub: 'Generics e Repository Pattern',
         status: 'Destaque',
-        images: [],
+        images: [
+            'img/generic-data-engine/img-gde1.png',
+            'img/generic-data-engine/img-gde2.png'
+        ],
         site: '',
         repo: 'https://github.com/esteves-mth/generic-data-engine',
-        desc: 'Repositório genérico em memória que funciona com qualquer entidade. Utiliza Generics, interface Identificavel, Repository Pattern e tratamento de ID duplicado. Inclui modelos de exemplo (Produto e Aluno) e testes unitários com JUnit 5.',
+        desc: 'Repositório genérico em memória para entidades identificáveis, utilizando Generics, interfaces e Repository Pattern.',
         habilidades: ['Java', 'Generics', 'Repository Pattern', 'JUnit', 'Maven'],
         praticado: [
             'Criação de interfaces genéricas reutilizáveis.',
-            'Implementação do padrão Repository em memória com HashMap.',
-            'Validação de dados e tratamento de exceções customizadas.',
-            'Escrita de testes unitários com JUnit 5.',
-            'Organização do projeto com Maven e pacotes bem definidos.'
+            'Implementação de repositório em memória com HashMap.',
+            'Validação de dados e tratamento de exceções personalizadas.',
+            'Testes de validação de entidades com JUnit 5.',
+            'Organização do projeto e gerenciamento de dependências com Maven.'
         ]
     },
     {
         name: 'biblioteca-java',
         sub: 'Collections e Stream API',
         status: 'Concluído',
-        images: [],
+        images: [
+            'img/biblioteca-java/img-bj1.png'
+        ],
         site: '',
         repo: 'https://github.com/esteves-mth/biblioteca-java',
-        desc: 'Sistema de gerenciamento de biblioteca em Java puro (sem banco de dados). Controla cadastro de livros, empréstimos, devoluções e histórico usando Collections, Stream API e exceções customizadas.',
+        desc: 'Sistema de gerenciamento de biblioteca em Java puro, sem banco de dados, com cadastro de livros, empréstimos, devoluções e histórico.',
         habilidades: ['Java', 'Collections', 'Stream API', 'POO'],
         praticado: [
-            'Uso avançado de List, Map e ArrayList.',
-            'Aplicação de Stream API para filtros e buscas.',
-            'Criação de exceções customizadas (checked).',
-            'Controle de estado e histórico de movimentações.',
-            'Organização de código orientado a objetos.'
+            'Utilização de List, Map e ArrayList para armazenar dados.',
+            'Aplicação de Stream API em filtros e buscas.',
+            'Criação e tratamento de exceções personalizadas.',
+            'Controle de empréstimos, devoluções e histórico.',
+            'Organização do código com orientação a objetos.'
         ]
     },
     {
         name: 'java-do-basico-ao-oop',
         sub: 'Evolução em Java',
         status: 'Em evolução',
-        images: ['img/java-do-basico-ao-oop.png'],
+        images: [
+            'img/java-do-basico-ao-oop/img-jb1.png'
+        ],
         site: '',
         repo: 'https://github.com/esteves-mth/java-do-basico-ao-oop',
-        desc: 'Percurso de aprendizado em Java: dos primeiros algoritmos à orientação a objetos, com interfaces, records e polimorfismo.',
+        desc: 'Repositório de estudos em Java, reunindo exercícios de lógica de programação e conceitos de orientação a objetos.',
         habilidades: ['Java', 'POO', 'Algoritmos'],
-        praticado: ['Lógica, estruturas de controle e algoritmos.', 'Classes, objetos e encapsulamento.', 'Herança, interfaces e polimorfismo.']
+        praticado: [
+            'Lógica de programação e estruturas de controle.',
+            'Classes, objetos e encapsulamento.',
+            'Herança, interfaces e polimorfismo.'
+        ]
     },
     {
         name: 'portfolio-esteves',
         sub: 'Portfólio pessoal',
         status: 'Em evolução',
-        images: [],
+        images: [
+            'img/portfolio-esteves/img-pe1.png',
+            'img/portfolio-esteves/img-pe2.png'
+        ],
         site: 'https://esteves-mth.github.io/portfolio-esteves/',
         repo: 'https://github.com/esteves-mth/portfolio-esteves',
-        desc: 'Portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro. Contém seções de sobre, skills interativas, projetos e contato, com suporte a tema claro/escuro e tradução PT/EN.',
+        desc: 'Portfólio pessoal desenvolvido com HTML, CSS e JavaScript, reunindo apresentação, habilidades, projetos e contato em uma interface com temas claro e escuro e suporte a português e inglês.',
         habilidades: ['HTML', 'CSS', 'JavaScript'],
         praticado: [
-            'Estrutura de página com navegação e seções dinâmicas.',
-            'Cards interativos e animações com CSS.',
-            'Sistema de tema claro/escuro e persistência no localStorage.',
-            'Tradução dinâmica de conteúdo (PT/EN).',
-            'Formulário de contato e links externos.'
+            'Estruturação de páginas e navegação entre seções.',
+            'Personalização visual com CSS e componentes interativos.',
+            'Utilização de localStorage para persistência de preferências.',
+            'Implementação de recursos de tema e idioma.',
+            'Implementação de visualizador de imagens com zoom, navegação e suporte a gestos.'
         ]
     },
     {
         name: 'landing-page-sfizio',
         sub: 'Branding e front-end',
         status: 'Concluído',
-        images: ['img/landing-page-sfizio.png'],
+        images: [
+            'img/landing-page-sfizio/img-lp1.png',
+            'img/landing-page-sfizio/img-lp2.png'
+        ],
         site: 'https://esteves-mth.github.io/landing-page-sfizio/',
         repo: 'https://github.com/esteves-mth/landing-page-sfizio',
-        desc: 'Landing page para a Sfizio, focada em apresentação de marca, com estrutura semântica, layout responsivo e interações leves.',
+        desc: 'Landing page para a marca Sfizio, com foco na apresentação da identidade visual, estrutura semântica e organização do conteúdo.',
         habilidades: ['HTML', 'CSS', 'JavaScript'],
-        praticado: ['Estrutura semântica e acessível em HTML.', 'Layout responsivo com Flexbox e Grid.', 'Interações leves com eventos em JavaScript.']
+        praticado: [
+            'Estruturação de páginas com HTML semântico.',
+            'Construção de layouts com Flexbox e Grid.',
+            'Implementação de interações básicas com JavaScript.'
+        ]
     },
     {
         name: 'sfizio-massas',
         sub: 'E-commerce visual',
         status: 'Concluído',
-        images: ['img/sfizio-massas.png'],
+        images: [
+            'img/sfizio-massas/img-sm1.png',
+            'img/sfizio-massas/img-sm2.png',
+            'img/sfizio-massas/img-sm3.png'
+        ],
         site: 'https://esteves-mth.github.io/sfizio-massas/',
         repo: 'https://github.com/esteves-mth/sfizio-massas',
-        desc: 'Conceito visual de e-commerce para massas artesanais, com foco na apresentação do catálogo e na navegação.',
-        habilidades: ['HTML', 'CSS', 'JavaScript'],
-        praticado: ['Apresentação de catálogo de produtos.', 'Navegação e experiência do visitante.', 'Componentes e comportamento em JavaScript.']
+        desc: 'Protótipo visual de e-commerce para uma marca de massas artesanais, com catálogo de produtos e navegação entre páginas. Não possui backend ou persistência de dados.',
+        habilidades: ['HTML', 'CSS'],
+        praticado: [
+            'Organização e apresentação visual de um catálogo de produtos.',
+            'Construção da navegação e experiência do visitante.',
+            'Estruturação de páginas com HTML e CSS.'
+        ]
     }
 ];
 
@@ -430,69 +462,133 @@ const traducoesDados = {
     'Trabalho em fluxos separados.': 'Working in separate streams.',
     'Repositórios': 'Repositories',
     'Organização e colaboração.': 'Organization and collaboration.',
-    "Arquitetura": "Architecture",
-    "Exceções": "Exceptions",
-
-    'Backend Java': 'Java backend',
-    'Evolução em Java': 'Growth in Java',
-    'Branding e front-end': 'Branding and front-end',
-    'E-commerce visual': 'Visual e-commerce',
-    'Destaque': 'Featured',
+    'Arquitetura': 'Architecture',
+    'Exceções': 'Exceptions',
     'Todos': 'All',
+    'Screenshot do projeto': 'Project screenshot',
+    'Destaque': 'Featured',
     'Em evolução': 'In progress',
     'Concluído': 'Completed',
-    'CRUD para organizar produtos e categorias. A camada Java concentra as regras de negócio e o DAO acessa o MySQL com consultas parametrizadas.': 'CRUD to organize products and categories. The Java layer holds the business rules and the DAO accesses MySQL with parameterized queries.',
-    'Organização do domínio e das operações de cadastro.': 'Domain organization and registration operations.',
-    'Integração entre a aplicação Java e o banco de dados.': 'Integration between the Java application and the database.',
-    'Criação, leitura, atualização e exclusão de registros (CRUD).': 'Creating, reading, updating and deleting records (CRUD).',
-    'Percurso de aprendizado em Java: dos primeiros algoritmos à orientação a objetos, com interfaces, records e polimorfismo.': 'Java learning path: from the first algorithms to object orientation, with interfaces, records and polymorphism.',
-    'Lógica, estruturas de controle e algoritmos.': 'Logic, control structures and algorithms.',
+    'Desenvolvimento Backend e aplicações Java.': 'Java backend development and applications.',
+    'Tipos genéricos e criação de estruturas reutilizáveis.': 'Generic types and reusable structures.',
+    'List, Map, manipulação de coleções, filtros e buscas com Streams.': 'List, Map, collection manipulation, filtering and searches with Streams.',
+    'Separação de responsabilidades, organização em camadas e Repository Pattern.': 'Separation of responsibilities, layered architecture and Repository Pattern.',
+    'Exceções nativas, tratamento de erros e criação de exceções personalizadas.': 'Built-in exceptions, error handling and custom exception creation.',
+
+    'Bancos de dados relacionais e persistência de dados.': 'Relational databases and data persistence.',
+    'Modelagem Relacional': 'Relational Modeling',
+    'Criação de tabelas, chaves primárias, chaves estrangeiras e relacionamentos.': 'Creating tables, primary keys, foreign keys and relationships.',
+    'Consultas, operações CRUD, filtros, JOINs e manipulação de dados.': 'Queries, CRUD operations, filters, JOINs and data manipulation.',
+    'Integridade de Dados': 'Data Integrity',
+    'Restrições, relacionamentos e consistência das informações no banco.': 'Constraints, relationships and database consistency.',
+    'Conexões, PreparedStatement e execução de operações no banco.': 'Connections, PreparedStatement and database operations.',
+
+    'Estruturação e semântica de páginas web.': 'Structure and semantics of web pages.',
+    'Elementos e Navegação': 'Elements and Navigation',
+    'Links, imagens, listas, tabelas e navegação entre páginas.': 'Links, images, lists, tables and navigation between pages.',
+    'Uso de atributos e estruturas que facilitam a navegação e compreensão do conteúdo.': 'Attributes and structures that improve navigation and content understanding.',
+    'Criação de formulários, campos e validações básicas.': 'Creating forms, fields and basic validations.',
+
+    'Estilização e construção de interfaces.': 'Interface styling and development.',
+    'Layout': 'Layout',
+    'Flexbox, Grid e posicionamento de elementos.': 'Flexbox, Grid and element positioning.',
+    'Estilização': 'Styling',
+    'Cores, tipografia, espaçamentos e efeitos visuais.': 'Colors, typography, spacing and visual effects.',
+    'Media Queries e adaptação de layouts para diferentes telas (em desenvolvimento).': 'Media Queries and layout adaptation for different screens (in progress).',
+    'Transições, transformações e animações com CSS (em desenvolvimento).': 'Transitions, transformations and CSS animations (in progress).',
+    'Implementação de visualizador de imagens com zoom, navegação e suporte a gestos.': 'Implementation of an image viewer with zoom, navigation and gesture support.',
+    'Fundamentos da linguagem e interatividade web.': 'Language fundamentals and web interactivity.',
+    'Variáveis, tipos de dados, operadores, condicionais e loops.': 'Variables, data types, operators, conditionals and loops.',
+    'Funções e Estruturas': 'Functions and Structures',
+    'Funções, arrays e objetos.': 'Functions, arrays and objects.',
+    'DOM e Eventos': 'DOM and Events',
+    'Noções de seleção e manipulação de elementos HTML e tratamento de eventos.': 'Basic knowledge of selecting and manipulating HTML elements and handling events.',
+    'Implementação de funcionalidades dinâmicas com apoio de referências e código externo.': 'Implementing dynamic features with the help of references and external code.',
+
+    'Fundamentos de desenvolvimento com C#.': 'C# development fundamentals.',
+    'Sintaxe, variáveis, tipos de dados e estruturas de controle.': 'Syntax, variables, data types and control structures.',
+    'Classes, objetos, métodos e construtores.': 'Classes, objects, methods and constructors.',
+    'Banco de Dados': 'Database',
+    'Integração de aplicações C# com bancos de dados relacionais em atividades práticas.': 'Integration of C# applications with relational databases in practical exercises.',
+
+    'Utilização de terminal e administração básica de sistemas Linux.': 'Terminal usage and basic Linux system administration.',
+    'Terminal': 'Terminal',
+    'Navegação por diretórios e execução de comandos.': 'Directory navigation and command execution.',
+    'Gerenciamento de Arquivos': 'File Management',
+    'Criação, cópia, movimentação e remoção de arquivos e diretórios.': 'Creating, copying, moving and deleting files and directories.',
+    'Permissões e Usuários': 'Permissions and Users',
+    'Gerenciamento de permissões, usuários e privilégios administrativos.': 'Managing permissions, users and administrative privileges.',
+    'Serviços e Servidores': 'Services and Servers',
+    'Contato prático com Apache HTTP Server e serviços FTP.': 'Hands-on experience with Apache HTTP Server and FTP services.',
+
+    'Controle de versão e colaboração em projetos.': 'Version control and project collaboration.',
+    'Criação, organização e gerenciamento de repositórios.': 'Creating, organizing and managing repositories.',
+    'Controle de Versão': 'Version Control',
+    'Commits, histórico de alterações, push e pull.': 'Commits, change history, push and pull.',
+    'Branches': 'Branches',
+    'Criação, gerenciamento e alternância entre branches.': 'Creating, managing and switching between branches.',
+    'Colaboração': 'Collaboration',
+    'Organização do fluxo de desenvolvimento e compartilhamento de projetos.': 'Organizing development workflows and sharing projects.',
+
+    'Build e gerenciamento de dependências.': 'Build and dependency management.',
+    'Gerenciamento de Dependências': 'Dependency Management',
+    'Adição e configuração de bibliotecas pelo pom.xml.': 'Adding and configuring libraries through pom.xml.',
+    'Estrutura de Projetos': 'Project Structure',
+    'Organização de projetos Java e configuração do pom.xml.': 'Organizing Java projects and configuring pom.xml.',
+    'Conhecimento básico dos comandos Maven e do processo de construção de projetos.': 'Basic knowledge of Maven commands and the project build process.',
+
+    'Backend Java': 'Java backend',
+    'Generics e Repository Pattern': 'Generics and Repository Pattern',
+    'Collections e Stream API': 'Collections and Stream API',
+    'Evolução em Java': 'Growth in Java',
+    'Portfólio pessoal': 'Personal portfolio',
+    'Branding e front-end': 'Branding and front-end',
+    'E-commerce visual': 'Visual e-commerce',
+    'Classes, objetos, construtores, encapsulamento, herança, polimorfismo e interfaces.': 'Classes, objects, constructors, encapsulation, inheritance, polymorphism and interfaces.',
+    'Collections & Stream API': 'Collections & Stream API',
+    'Estruturação de páginas com elementos semânticos.': 'Structuring pages with semantic elements.',
+    'Interatividade': 'Interactivity',
+    'Aplicação de gerenciamento de estoque desenvolvida em Java, com persistência em MySQL por meio de JDBC.': 'Inventory management application developed in Java, with MySQL persistence through JDBC.',
+    'Organização de classes e operações de gerenciamento de produtos.': 'Organization of classes and product management operations.',
+    'Integração entre aplicação Java e banco de dados MySQL.': 'Integration between a Java application and a MySQL database.',
+    'Implementação de operações CRUD com consultas parametrizadas.': 'Implementation of CRUD operations with parameterized queries.',
+
+    'Repositório genérico em memória para entidades identificáveis, utilizando Generics, interfaces e Repository Pattern.': 'In-memory generic repository for identifiable entities, using Generics, interfaces and the Repository Pattern.',
+    'Criação de interfaces genéricas reutilizáveis.': 'Creation of reusable generic interfaces.',
+    'Implementação de repositório em memória com HashMap.': 'Implementation of an in-memory repository with HashMap.',
+    'Validação de dados e tratamento de exceções personalizadas.': 'Data validation and custom exception handling.',
+    'Testes de validação de entidades com JUnit 5.': 'Entity validation tests with JUnit 5.',
+    'Organização do projeto e gerenciamento de dependências com Maven.': 'Project organization and dependency management with Maven.',
+
+    'Sistema de gerenciamento de biblioteca em Java puro, sem banco de dados, com cadastro de livros, empréstimos, devoluções e histórico.': 'Library management system built with pure Java, without a database, featuring book registration, loans, returns and history.',
+    'Utilização de List, Map e ArrayList para armazenar dados.': 'Using List, Map and ArrayList to store data.',
+    'Aplicação de Stream API em filtros e buscas.': 'Applying the Stream API to filtering and searches.',
+    'Criação e tratamento de exceções personalizadas.': 'Creating and handling custom exceptions.',
+    'Controle de empréstimos, devoluções e histórico.': 'Managing loans, returns and history.',
+    'Organização do código com orientação a objetos.': 'Object-oriented code organization.',
+
+    'Repositório de estudos em Java, reunindo exercícios de lógica de programação e conceitos de orientação a objetos.': 'Java study repository featuring programming logic exercises and object-oriented programming concepts.',
+    'Lógica de programação e estruturas de controle.': 'Programming logic and control structures.',
     'Classes, objetos e encapsulamento.': 'Classes, objects and encapsulation.',
     'Herança, interfaces e polimorfismo.': 'Inheritance, interfaces and polymorphism.',
-    'Landing page para a Sfizio, focada em apresentação de marca, com estrutura semântica, layout responsivo e interações leves.': 'Landing page for Sfizio, focused on brand presentation, with semantic structure, responsive layout and light interactions.',
-    'Estrutura semântica e acessível em HTML.': 'Semantic, accessible structure in HTML.',
-    'Layout responsivo com Flexbox e Grid.': 'Responsive layout with Flexbox and Grid.',
-    'Interações leves com eventos em JavaScript.': 'Light interactions with JavaScript events.',
-    'Conceito visual de e-commerce para massas artesanais, com foco na apresentação do catálogo e na navegação.': 'Visual e-commerce concept for artisanal pasta, focused on catalog presentation and navigation.',
-    'Apresentação de catálogo de produtos.': 'Product catalog presentation.',
-    'Navegação e experiência do visitante.': 'Navigation and visitor experience.',
-    'Componentes e comportamento em JavaScript.': 'Components and behavior in JavaScript.',
-    'Screenshot do projeto': 'Project screenshot',
-    "Repositório genérico em memória que funciona com qualquer entidade. Utiliza Generics, interface Identificavel, Repository Pattern e tratamento de ID duplicado. Inclui modelos de exemplo (Produto e Aluno) e testes unitários com JUnit 5.": "In-memory generic repository that works with any entity. Uses Generics, Identificavel interface, Repository Pattern and duplicate ID handling. Includes example models (Produto and Aluno) and unit tests with JUnit 5.",
-    "Criação de interfaces genéricas reutilizáveis.": "Creation of reusable generic interfaces.",
-    "Implementação do padrão Repository em memória com HashMap.": "Implementation of the in-memory Repository pattern with HashMap.",
-    "Validação de dados e tratamento de exceções customizadas.": "Data validation and custom exception handling.",
-    "Escrita de testes unitários com JUnit 5.": "Writing unit tests with JUnit 5.",
-    "Organização do projeto com Maven e pacotes bem definidos.": "Project organization with Maven and well-defined packages.",
-    "Classes, interfaces, encapsulamento, herança e polimorfismo.": "Classes, interfaces, encapsulation, inheritance and polymorphism.",
-    "Tipos genéricos e interfaces reutilizáveis (Identificavel).": "Generic types and reusable interfaces (Identificavel).",
-    "List, Map, filtros, buscas e manipulação de dados.": "List, Map, filters, searches and data manipulation.",
-    "Separação em camadas e Repository Pattern.": "Layered architecture and Repository Pattern.",
-    "Tratamento de erros e exceções customizadas.": "Error handling and custom exceptions.",
-    "Build e gerenciamento de dependências.": "Build and dependency management.",
-    "Dependências": "Dependencies",
-    "Gerenciamento de bibliotecas do projeto.": "Project library management.",
-    "Build": "Build",
-    "Compilação e empacotamento padronizado.": "Standardized compilation and packaging.",
-    "Estrutura": "Structure",
-    "Organização padrão de projetos Java.": "Standard Java project organization.",
-    "Collections e Stream API": "Collections and Stream API",
-    "Sistema de gerenciamento de biblioteca em Java puro (sem banco de dados). Controla cadastro de livros, empréstimos, devoluções e histórico usando Collections, Stream API e exceções customizadas.": "Library management system in pure Java (no database). Manages book registration, loans, returns and history using Collections, Stream API and custom exceptions.",
-    "Uso avançado de List, Map e ArrayList.": "Advanced use of List, Map and ArrayList.",
-    "Aplicação de Stream API para filtros e buscas.": "Applying Stream API for filters and searches.",
-    "Criação de exceções customizadas (checked).": "Creating custom (checked) exceptions.",
-    "Controle de estado e histórico de movimentações.": "State control and movement history.",
-    "Organização de código orientado a objetos.": "Object-oriented code organization.",
-    "Portfólio pessoal": "Personal portfolio",
-    "Portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro. Contém seções de sobre, skills interativas, projetos e contato, com suporte a tema claro/escuro e tradução PT/EN.": "Personal portfolio built with pure HTML, CSS and JavaScript. It contains about, interactive skills, projects and contact sections, with light/dark theme support and PT/EN translation.",
-    "Estrutura de página com navegação e seções dinâmicas.": "Page structure with navigation and dynamic sections.",
-    "Cards interativos e animações com CSS.": "Interactive cards and CSS animations.",
-    "Sistema de tema claro/escuro e persistência no localStorage.": "Light/dark theme system with localStorage persistence.",
-    "Tradução dinâmica de conteúdo (PT/EN).": "Dynamic content translation (PT/EN).",
-    "Formulário de contato e links externos.": "Contact form and external links.",
 
+    'Portfólio pessoal desenvolvido com HTML, CSS e JavaScript, reunindo apresentação, habilidades, projetos e contato em uma interface com temas claro e escuro e suporte a português e inglês.': 'Personal portfolio built with HTML, CSS and JavaScript, featuring an introduction, skills, projects and contact section, with light and dark themes and Portuguese and English support.',
+    'Estruturação de páginas e navegação entre seções.': 'Page structure and navigation between sections.',
+    'Personalização visual com CSS e componentes interativos.': 'Visual customization with CSS and interactive components.',
+    'Utilização de localStorage para persistência de preferências.': 'Using localStorage to persist preferences.',
+    'Implementação de recursos de tema e idioma.': 'Implementation of theme and language features.',
 
+    'Landing page para a marca Sfizio, com foco na apresentação da identidade visual, estrutura semântica e organização do conteúdo.': 'Landing page for the Sfizio brand, focused on visual identity, semantic structure and content organization.',
+    'Estruturação de páginas com HTML semântico.': 'Structuring pages with semantic HTML.',
+    'Construção de layouts com Flexbox e Grid.': 'Building layouts with Flexbox and Grid.',
+    'Implementação de interações básicas com JavaScript.': 'Implementing basic interactions with JavaScript.',
+
+    'Protótipo visual de e-commerce para uma marca de massas artesanais, com catálogo de produtos e navegação entre páginas. Não possui backend ou persistência de dados.': 'Visual e-commerce prototype for an artisanal pasta brand, featuring a product catalog and navigation between pages. It does not include a backend or data persistence.',
+    'Organização e apresentação visual de um catálogo de produtos.': 'Organization and visual presentation of a product catalog.',
+    'Construção da navegação e experiência do visitante.': 'Building navigation and visitor experience.',
+    'Estruturação de páginas com HTML e CSS.': 'Structuring pages with HTML and CSS.'
 };
+
 projetos.forEach((p) => {
     traducoesDados[`matheus / projetos / ${p.name}`] = `matheus / projects / ${p.name}`;
 });
@@ -1586,3 +1682,285 @@ formularioContato.addEventListener('submit', async (e) => {
 document.addEventListener('touchstart', () => {}, {
     passive: true
 });
+
+(() => {
+    const janela = document.getElementById('janela');
+    if (!janela || typeof HTMLDialogElement === 'undefined') return;
+    const raiz = document.documentElement;
+    const reduzir = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const T = (pt, ing) => (raiz.lang === 'en' ? ing : pt);
+
+    const dlg = document.createElement('dialog');
+    dlg.id = 'lightbox';
+    dlg.innerHTML = `
+        <div class="lb-barra">
+            <span class="lb-info"><span class="lb-nome"></span><span class="lb-contador"></span></span>
+            <span class="lb-acoes">
+                <button type="button" data-lb="menos">−</button>
+                <button type="button" class="lb-zoom" data-lb="reset">100%</button>
+                <button type="button" data-lb="mais">+</button>
+                <button type="button" data-lb="fechar">×</button>
+            </span>
+        </div>
+        <div class="lb-palco"><img class="lb-img" alt="" draggable="false"></div>
+        <button type="button" class="lb-seta lb-ant" data-lb="ant">‹</button>
+        <button type="button" class="lb-seta lb-prox" data-lb="prox">›</button>
+        <p class="lb-dica"></p>`;
+    document.body.append(dlg);
+
+    const palco = dlg.querySelector('.lb-palco');
+    const img = dlg.querySelector('.lb-img');
+    const rotZoom = dlg.querySelector('.lb-zoom');
+    const MIN = 1,
+        MAX = 6;
+    let lista = [],
+        idx = 0,
+        s = 1,
+        tx = 0,
+        ty = 0;
+
+    function limites() {
+        return {
+            x: Math.max(0, (img.offsetWidth * s - palco.clientWidth) / 2),
+            y: Math.max(0, (img.offsetHeight * s - palco.clientHeight) / 2)
+        };
+    }
+
+    function aplicar(suave) {
+        const l = limites();
+        tx = Math.max(-l.x, Math.min(l.x, tx));
+        ty = Math.max(-l.y, Math.min(l.y, ty));
+        img.classList.toggle('suave', Boolean(suave) && !reduzir());
+        img.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
+        rotZoom.textContent = `${Math.round(s * 100)}%`;
+        palco.classList.toggle('ampliada', s > 1.001);
+    }
+
+    function zoomPara(novo, cx, cy, suave) {
+        novo = Math.max(MIN, Math.min(MAX, novo));
+        const r = palco.getBoundingClientRect();
+        const px = cx - (r.left + r.width / 2);
+        const py = cy - (r.top + r.height / 2);
+        const k = novo / s;
+        tx = px - (px - tx) * k;
+        ty = py - (py - ty) * k;
+        s = novo;
+        if (s <= 1.001) {
+            s = 1;
+            tx = 0;
+            ty = 0;
+        }
+        aplicar(suave);
+    }
+
+    function zoomCentro(fator, suave) {
+        const r = palco.getBoundingClientRect();
+        zoomPara(s * fator, r.left + r.width / 2, r.top + r.height / 2, suave);
+    }
+
+    function mostrar(i) {
+        if (i < 0 || i >= lista.length) return;
+        idx = i;
+        img.src = lista[i].src;
+        img.alt = lista[i].alt;
+        s = 1;
+        tx = 0;
+        ty = 0;
+        aplicar(false);
+        const varias = lista.length > 1;
+        dlg.querySelector('.lb-contador').textContent = varias ? `${String(i + 1).padStart(2, '0')} / ${String(lista.length).padStart(2, '0')}` : '';
+        dlg.querySelector('.lb-ant').hidden = !varias;
+        dlg.querySelector('.lb-prox').hidden = !varias;
+        dlg.querySelector('.lb-ant').disabled = i === 0;
+        dlg.querySelector('.lb-prox').disabled = i === lista.length - 1;
+    }
+
+    function rotular() {
+        dlg.setAttribute('aria-label', T('Screenshot ampliada', 'Enlarged screenshot'));
+        dlg.querySelector('[data-lb="menos"]').setAttribute('aria-label', T('Diminuir zoom', 'Zoom out'));
+        dlg.querySelector('[data-lb="mais"]').setAttribute('aria-label', T('Aumentar zoom', 'Zoom in'));
+        dlg.querySelector('[data-lb="reset"]').setAttribute('aria-label', T('Voltar ao tamanho original', 'Reset zoom'));
+        dlg.querySelector('[data-lb="fechar"]').setAttribute('aria-label', T('Fechar', 'Close'));
+        dlg.querySelector('[data-lb="ant"]').setAttribute('aria-label', T('Screenshot anterior', 'Previous screenshot'));
+        dlg.querySelector('[data-lb="prox"]').setAttribute('aria-label', T('Próxima screenshot', 'Next screenshot'));
+        dlg.querySelector('.lb-dica').textContent = T('Role ou use + e − para o zoom · arraste para mover · toque duas vezes para alternar', 'Scroll or use + and − to zoom · drag to move · double-tap to toggle');
+    }
+
+    function abrir(slideImg) {
+        const imgs = [...janela.querySelectorAll('.janela-img .slide img')];
+        if (!imgs.length) return;
+        lista = imgs.map((i) => ({
+            src: i.currentSrc || i.src,
+            alt: i.alt
+        }));
+        const h3 = janela.querySelector('.janela-info h3');
+        dlg.querySelector('.lb-nome').textContent = h3 ? h3.textContent : '';
+        rotular();
+        dlg.showModal();
+        raiz.classList.add('lightbox-aberto');
+        mostrar(Math.max(0, imgs.indexOf(slideImg)));
+    }
+
+    dlg.addEventListener('close', () => raiz.classList.remove('lightbox-aberto'));
+
+    function slideAtual() {
+        const trilho = janela.querySelector('.galeria-trilho');
+        const imgs = [...janela.querySelectorAll('.janela-img .slide img')];
+        if (!trilho) return imgs[0];
+        return imgs[Math.round(trilho.scrollLeft / (trilho.clientWidth || 1))] || imgs[0];
+    }
+
+    janela.addEventListener('click', (e) => {
+        if (e.target.closest('[data-ampliar]')) {
+            abrir(slideAtual());
+            return;
+        }
+        const alvo = e.target.closest('.janela-img .slide img');
+        if (alvo) abrir(alvo);
+    });
+
+    function injetarBotao() {
+        const box = janela.querySelector('.janela-img');
+        if (!box || box.querySelector('.ampliar') || !box.querySelector('.slide img')) return;
+        box.insertAdjacentHTML('beforeend', `<button type="button" class="ampliar" data-ampliar aria-label="${T('Ampliar screenshot', 'Enlarge screenshot')}" title="${T('Ampliar', 'Enlarge')}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5M11 8.5v5M8.5 11h5"/></svg></button>`);
+    }
+    new MutationObserver(injetarBotao).observe(janela, {
+        childList: true,
+        subtree: true
+    });
+    injetarBotao();
+
+    dlg.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-lb]');
+        if (!b) return;
+        const acao = b.dataset.lb;
+        if (acao === 'fechar') dlg.close();
+        else if (acao === 'mais') zoomCentro(1.5, true);
+        else if (acao === 'menos') zoomCentro(1 / 1.5, true);
+        else if (acao === 'reset') zoomCentro(1 / s, true);
+        else if (acao === 'ant') mostrar(idx - 1);
+        else if (acao === 'prox') mostrar(idx + 1);
+    });
+
+    palco.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const forca = e.ctrlKey ? 0.01 : 0.002;
+        zoomPara(s * Math.exp(-e.deltaY * forca), e.clientX, e.clientY, false);
+    }, {
+        passive: false
+    });
+
+    const toques = new Map();
+    let arrasto = null,
+        pinca = null,
+        moveu = false,
+        ultimoToque = 0,
+        alvoInicial = null;
+
+    palco.addEventListener('pointerdown', (e) => {
+        alvoInicial = e.target;
+        palco.setPointerCapture(e.pointerId);
+        toques.set(e.pointerId, {
+            x: e.clientX,
+            y: e.clientY
+        });
+        moveu = false;
+        if (toques.size === 2) {
+            const [a, b] = [...toques.values()];
+            pinca = {
+                d: Math.hypot(a.x - b.x, a.y - b.y) || 1,
+                s0: s
+            };
+            arrasto = null;
+        } else if (toques.size === 1) {
+            arrasto = {
+                x: e.clientX,
+                y: e.clientY,
+                tx,
+                ty
+            };
+        }
+    });
+
+    palco.addEventListener('pointermove', (e) => {
+        if (!toques.has(e.pointerId)) return;
+        toques.set(e.pointerId, {
+            x: e.clientX,
+            y: e.clientY
+        });
+        if (toques.size === 2 && pinca) {
+            const [a, b] = [...toques.values()];
+            zoomPara(pinca.s0 * Math.hypot(a.x - b.x, a.y - b.y) / pinca.d, (a.x + b.x) / 2, (a.y + b.y) / 2, false);
+            moveu = true;
+        } else if (arrasto && toques.size === 1) {
+            const dx = e.clientX - arrasto.x;
+            const dy = e.clientY - arrasto.y;
+            if (Math.abs(dx) + Math.abs(dy) > 4) moveu = true;
+            if (s > 1) {
+                tx = arrasto.tx + dx;
+                ty = arrasto.ty + dy;
+                aplicar(false);
+            }
+        }
+    });
+
+    function soltar(e, cancelado) {
+        const foiClique = !cancelado && toques.size === 1 && !moveu;
+        toques.delete(e.pointerId);
+        if (toques.size < 2) pinca = null;
+        if (toques.size === 1) {
+            const [p] = [...toques.values()];
+            arrasto = {
+                x: p.x,
+                y: p.y,
+                tx,
+                ty
+            };
+        } else {
+            arrasto = null;
+        }
+        if (!foiClique) return;
+        if (alvoInicial === palco) {
+            dlg.close();
+            return;
+        }
+        const agora = Date.now();
+        if (agora - ultimoToque < 320) {
+            zoomPara(s > 1.05 ? 1 : 2.5, e.clientX, e.clientY, true);
+            ultimoToque = 0;
+        } else {
+            ultimoToque = agora;
+        }
+    }
+    palco.addEventListener('pointerup', (e) => soltar(e, false));
+    palco.addEventListener('pointercancel', (e) => soltar(e, true));
+
+    dlg.addEventListener('keydown', (e) => {
+        const passo = 80;
+        if (e.key === '+' || e.key === '=') zoomCentro(1.5, true);
+        else if (e.key === '-' || e.key === '_') zoomCentro(1 / 1.5, true);
+        else if (e.key === '0') zoomCentro(1 / s, true);
+        else if (e.key === 'ArrowLeft') {
+            if (s > 1.01) {
+                tx += passo;
+                aplicar(true);
+            } else mostrar(idx - 1);
+        } else if (e.key === 'ArrowRight') {
+            if (s > 1.01) {
+                tx -= passo;
+                aplicar(true);
+            } else mostrar(idx + 1);
+        } else if (e.key === 'ArrowUp' && s > 1.01) {
+            ty += passo;
+            aplicar(true);
+        } else if (e.key === 'ArrowDown' && s > 1.01) {
+            ty -= passo;
+            aplicar(true);
+        } else return;
+        e.preventDefault();
+    });
+
+    addEventListener('resize', () => {
+        if (dlg.open) aplicar(false);
+    });
+})();
